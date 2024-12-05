@@ -6,7 +6,7 @@ use std::str::Utf8Error;
 use thiserror::Error;
 
 /// Enum defining all possible error when manipulating Philips struct
-#[derive(Error, Debug)]
+#[derive(Error, Clone, Debug)]
 pub enum PhilipsSlideError {
     /// CxxString to &str conversion error
     #[error(transparent)]
@@ -26,7 +26,7 @@ pub enum PhilipsSlideError {
 }
 
 #[cfg(feature = "image")]
-#[derive(Error, Debug)]
+#[derive(Error, Clone, Debug)]
 pub enum ImageError {
     /// Error while creating Image from vector
     #[error(transparent)]
@@ -36,7 +36,7 @@ pub enum ImageError {
     Other(String),
 }
 
-#[derive(Error, Debug)]
+#[derive(Error, Clone, Debug)]
 pub enum DimensionsRangeToSizeError {
     #[error("Step X is null")]
     NullStepX,
